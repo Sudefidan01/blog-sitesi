@@ -1,0 +1,66 @@
+﻿@model _16122023_BlogSitesi.Entities.Blog
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Blog DÜzenle</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @* Baslik Divi *@
+        <div class="form-group">
+            @Html.LabelFor(x => x.Baslik, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Baslik)
+            </div>
+        </div>
+        @* İçerik Div i *@
+        <div class="form-group">
+            @Html.LabelFor(x => x.Icerik, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.Icerik, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Icerik)
+            </div>
+        </div>
+        @* Anahtar Kelime Div i *@
+        <div class="form-group">
+            @Html.LabelFor(x => x.AnahtarKelime, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.AnahtarKelime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AnahtarKelime)
+            </div>
+        </div>
+        @* Kategoriler Div i *@
+        <div class="form-group">
+            @Html.LabelFor(x => x.KategoriId, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.DropDownListFor(x => x.KategoriId, null, "Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AnahtarKelime)
+            </div>
+        </div>
+        @* Durum Div i *@
+        <div class="form-group">
+            @Html.LabelFor(x => x.Durum, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <div class="checkbox">
+                    <label class="label label-success">
+                        @Html.CheckBoxFor(x => x.Durum)Aktif
+                        @Html.ValidationMessageFor(x => x.Durum)
+                    </label>
+                </div>
+            </div>
+        </div>
+        @* Button *@
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+
+        </div>
+
+    </div>
+}
+

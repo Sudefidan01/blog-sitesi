@@ -1,0 +1,62 @@
+﻿@using _16122023_BlogSitesi.Extensions;
+@model IEnumerable<_16122023_BlogSitesi.Entities.Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Bloglar</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <br />
+        <a href="@Url.Action("Ekle")" class="btn btn-info">
+            <i class="fa-solid fa-plus"></i>Yeni Ekle
+
+        </a>
+
+    </div>
+
+</div>
+
+<hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori</th>
+            <th>Başlık</th>
+            <th>Anahtar Kelime</th>
+            <th>Durum</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ToList())
+        {
+            <tr>
+                <td>@item.Kategori.Ad</td>
+                <td>@item.Baslik</td>
+                <td>@item.AnahtarKelime</td>
+                <td>@item.Durum</td>
+                <td>@item.Tarih.ToShortDateString()</td>
+                <th>
+                    <a href="@Url.Action("Detay",new {id=item.Id})" class="btn btn-success">Detay</a>
+
+
+                    <a href="@Url.Action("Duzenle",new {id=item.Id})" class="btn btn-warning">Düzenle</a>
+
+                    <a href="@Url.Action("Sil",new {id=item.Id})" class="btn btn-danger" onclick="return confirm('@item.Baslik Blogu Silmek İstediğinize Emin Misiniz ?');">
+            Sil
+        </a>
+
+                </th>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

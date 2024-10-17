@@ -1,0 +1,57 @@
+﻿@model _16122023_BlogSitesi.Entities.Kategori
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Ekle</h2>
+<hr />
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    @* Baslik Divi *@
+    <div class="form-group">
+        @Html.LabelFor(x => x.Ad, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Ad)
+        </div>
+    </div>
+    @* Aciklama Div i *@
+    <div class="form-group">
+        @Html.LabelFor(x => x.Aciklama, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Aciklama)
+        </div>
+    </div>
+    @* Durum Div i *@
+    <div class="form-group">
+        @Html.LabelFor(x=> x.Durum , new {@class="col-sm-2 control-label"})
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label class="label label-success">
+                    @Html.CheckBoxFor(x=>x.Durum)Aktif
+                    @Html.ValidationMessageFor(x=>x.Durum)
+                </label>
+            </div>
+        </div>
+    </div>
+    @* Button *@
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+
+    </div>
+
+</div>
+}
+    
+
+
+
+
+
+
+         

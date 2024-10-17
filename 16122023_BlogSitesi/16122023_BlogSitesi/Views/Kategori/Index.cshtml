@@ -1,0 +1,56 @@
+﻿@model IQueryable<_16122023_BlogSitesi.Entities.Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Kategoriler</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <br />
+        <a href="@Url.Action("Ekle")" class="btn btn-info">
+            <i class="fa-solid fa-plus" ></i>Yeni Ekle
+
+        </a>
+
+    </div>
+
+</div>
+
+<hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Açıklama</th>
+            <th>Durum</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ToList())
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Aciklama</td>
+                <td>@item.Durum</td>
+                <td>@item.Tarih.ToShortDateString()</td>
+                <th>
+                    <a href="@Url.Action("Duzenle",new {id=item.Id})" class="btn btn-warning">Düzenle</a>
+
+                        <a href="@Url.Action("Sil",new {id=item.Id})" class="btn btn-danger" onclick="return confirm('@item.Ad Kategorisini Silmek İstediğinize Emin Misiniz ?');">Sil
+                    </a>
+
+                </th>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+

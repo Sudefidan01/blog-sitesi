@@ -1,0 +1,63 @@
+﻿@using System.Web.Optimization;
+@model _16122023_BlogSitesi.Models.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/style/custom")
+    @Styles.Render("~/style/bootstrap")
+    @Scripts.Render("~/script/modernizr")
+
+</head>
+<body>
+    <div class="loginPage">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(x => x.KullaniciAdi)
+                @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control", placeholder = "Kullanıcı Adı " })
+                @Html.ValidationMessageFor(x => x.KullaniciAdi)
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Parola)
+                @Html.PasswordFor(x => x.Parola, new { @class = "form-control", placeholder = "Parola" })
+                @Html.ValidationMessageFor(x => x.Parola)
+
+            </div>
+            <div class="checkbox">
+                @Html.CheckBoxFor(x => x.ParolaAktif, new { @onclick = "myFunction()" }) Şifreyi Göster
+            </div>
+            @Html.Raw(ViewBag.Mesaj)
+            <button type="submit" class="btn btn-danger"> Giriş Yap </button>
+
+
+        }
+
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("Parola");
+            if (x.type === "password")
+            {
+                x.type = "text";
+            }
+            else {
+
+                x.type = "password";
+            }
+            
+        }
+    </script>
+
+    @Scripts.Render("~/script/jquery")
+    @Scripts.Render("~/script/bootstrap")
+    @Scripts.Render("~/script/validations")
+</body>
+</html>

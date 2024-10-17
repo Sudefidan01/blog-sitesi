@@ -1,0 +1,30 @@
+﻿@model _16122023_BlogSitesi.Entities.Blog
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detay</h2>
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Kategori</dt>
+        <dd>@Html.DisplayFor(x => x.Kategori.Ad)</dd>
+
+        <dt>Başlık</dt>
+        <dd>@Html.DisplayFor(x => x.Baslik)</dd>
+
+        <dt>İçerik</dt>
+        <dd>@Html.DisplayFor(x => x.Icerik)</dd>
+
+        <dt>Tarih</dt>
+        <dd>@Html.DisplayFor(x => x.Tarih)</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Duzenle", new {id=Model.Id}) |
+    @Html.ActionLink("Bloglara Geri Dön","Index")
+</p>
+
